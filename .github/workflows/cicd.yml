@@ -12,7 +12,7 @@ jobs:
       - name: Login to Docker Hub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Build Docker Image
-        run: docker build -t shahabali323/reactjs-app-cicd --build-org REACT_APP_NODE_ENV='production' --build-org REACT_APP_SERVER_BASE_URL='${{ secrets.REACT_APP_SERVER_BASE_URL }}' .
+        run: docker build -t shahabali323/reactjs-app-cicd --build-arg REACT_APP_NODE_ENV='production' --build-arg REACT_APP_SERVER_BASE_URL='${{ secrets.REACT_APP_SERVER_BASE_URL }}' .
       - name: Publish Image to Docker Hub
         run: docker push shahabali323/reactjs-app-cicd:latest
 
